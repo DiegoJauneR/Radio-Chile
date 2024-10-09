@@ -10,7 +10,7 @@ function App() {
   const [iterador, setIterador] = useState(0)
   const [busqueda, setBusqueda] = useState()
   const [radiosFiltradas, setRadiosFiltradas] = useState([])
-  const [isPlaying, setIsPlaying] = useState(true)
+  const [isPlaying, setIsPlaying] = useState(false)
   const [volume, setVolume] = useState(0.5)
 
 
