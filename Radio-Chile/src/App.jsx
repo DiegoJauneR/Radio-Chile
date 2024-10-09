@@ -98,19 +98,29 @@ function App() {
   return (
     <main >
       <div>
-        <p>Radios Chilenas</p>
+        <h1>Radios Chilenas</h1>
       </div>
-      <input type="search" placeholder="Buscar Radio" value={busqueda} onChange={filtrarBusqueda}></input>
-      <button onClick={buscarRadio}>Buscar</button>
+    
+      <div className="containerBusqueda">
+        
+        <div className="input-group">
+          <input required=" " type="text" name="text"  className="input" value={busqueda} onChange={filtrarBusqueda} />
+          <label className="user-label">Buscar Radio</label>
+        </div>
+
+
+        <button className="btnBuscar" onClick={buscarRadio}>Buscar</button>
+        
+      </div>
       {busqueda && (
-        <ul>
-          {radiosFiltradas.map((radio, index) => (
-            <li key={index}>
-              <button onClick={()=>rellenarBusqueda(radio.name)}>{radio.name}</button>
-            </li>
-          ))}
-        </ul>
-      )}
+          <div className="listaRadios">
+            {radiosFiltradas.map((radio, index) => (
+              <div key={index}>
+                <button onClick={()=>rellenarBusqueda(radio.name)}>{radio.name}</button>
+              </div>
+            ))}
+          </div>
+        )}
       <div className='card'>
         <Radio data={data} iterador={iterador} volume={volume}></Radio>
         <div className="card__wrapper">
