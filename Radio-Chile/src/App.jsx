@@ -10,6 +10,9 @@ function App() {
   const [iterador, setIterador] = useState(0)
   const [busqueda, setBusqueda] = useState()
   const [radiosFiltradas, setRadiosFiltradas] = useState([])
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [volume, setVolume] = useState(0.5)
+
 
 
   useEffect(() => {
@@ -21,6 +24,24 @@ function App() {
       .then((json) => setData(json.data))
       .catch((err) => console.error("error:" + err));
   }, []);
+
+  useEffect(() => {
+    const audioElement = document.getElementById("audioElement")
+
+    if (audioElement) {
+      audioElement.volume = volume
+
+      const updateVolume = () => {
+        setVolume(audioElement.volume)
+      };
+
+      audioElement.addEventListener("volumechange", updateVolume)
+
+      return () => {
+        audioElement.removeEventListener("volumechange", updateVolume)
+      }
+    }
+  }, [iterador, volume])
 
   const siguienteRadio = () => {
     if(iterador === data.length-1) {
@@ -62,6 +83,18 @@ function App() {
     setRadiosFiltradas([])
   }
 
+  const togglePlayPause = () => {
+    const audioElement = document.getElementById("audioElement")
+
+    if (isPlaying) {
+      audioElement.pause()
+    } else {
+      audioElement.play()
+    }
+
+    setIsPlaying(!isPlaying)
+  }
+
   return (
     <main >
       <div>
@@ -79,10 +112,10 @@ function App() {
         </ul>
       )}
       <div className='card'>
-        <Radio data={data} iterador={iterador}></Radio>
+        <Radio data={data} iterador={iterador} volume={volume}></Radio>
         <div className="card__wrapper">
             <button className="card__btn btnAnterior" onClick={anteriorRadio}><FontAwesomeIcon icon={faBackward} style={{ color: "#ffffff" }} /></button>
-            <button className="card__btn card__btn-play ">
+            <button className="card__btn card__btn-play " onClick={togglePlayPause}>
              <FontAwesomeIcon icon={faPlay} style={{ color: "#ffffff" }} />
             </button>
             <button className="card__btn btnSiguiente" onClick={siguienteRadio}><FontAwesomeIcon icon={faForward} style={{ color: "#ffffff" }}></FontAwesomeIcon></button>

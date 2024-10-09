@@ -1,8 +1,7 @@
-/* eslint-disable react/prop-types */
 import { useEffect } from 'react';
 
 import './radio.css'
-const Radio = ({ data, iterador}) => {
+const Radio = ({ data, iterador, volume}) => {
   
 
  
@@ -18,6 +17,9 @@ const Radio = ({ data, iterador}) => {
     const audioElement = document.getElementById("audioElement");
     
     if (audioElement) {
+
+      audioElement.volume = volume
+
       const playAudio = async () => {
         try {
           await audioElement.play()
@@ -29,7 +31,7 @@ const Radio = ({ data, iterador}) => {
 
       playAudio()
     }
-  }, [elemento.stream])
+  }, [elemento.stream, volume])
 
   return (
     <section key={elemento.name} >
