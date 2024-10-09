@@ -1,11 +1,18 @@
+/* eslint-disable react/prop-types */
 import { useEffect } from 'react';
 
+import './radio.css'
 const Radio = ({ data, iterador}) => {
+  
+
+ 
+
   const elemento = data[iterador]
 
   if (!data || data.length === 0) {
     return <p>No hay datos disponibles</p>;
   }
+
 
   useEffect(() => {
     const audioElement = document.getElementById("audioElement");
@@ -25,17 +32,24 @@ const Radio = ({ data, iterador}) => {
   }, [elemento.stream])
 
   return (
-    <section key={elemento.name}>
-      <div>
-        <div>
+    <section key={elemento.name} >
+      <div >
+        
+        <div className='card__img'>
           <img src={elemento.image[200]} alt="Logo de Radio" />
         </div>
-        <a href={elemento.url}>{elemento.name}</a>
-        <div>
-          <audio controls id="audioElement">
-            <source src={elemento.stream} type="audio/aac"/>
-            Tu navegador no soporta el elemento de audio.
-          </audio>
+        <div className='card__title'>{elemento.name}</div>
+        <div className='card__subtitle'><a href={elemento.url}>{elemento.name}</a></div>
+       
+        <div className='card__wrapper'>
+          <div className="card__time card__time-passed">🟢</div>
+          <div className="card__timeline">
+            <audio controls id="audioElement" >
+              <source src={elemento.stream} type="audio/aac"/>
+              Tu navegador no soporta el elemento de audio.
+            </audio>
+          </div>
+          <div className="card__time card__time-left">Live</div>
         </div>
       </div>
     </section>

@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
 import Radio from "./Radio";
 import "./App.css";
+import "./radio.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faForward, faPlay, faBackward} from '@fortawesome/free-solid-svg-icons';
 
 function App() {
   const [data, setData] = useState([]);
   const [iterador, setIterador] = useState(0)
   const [busqueda, setBusqueda] = useState()
   const [radiosFiltradas, setRadiosFiltradas] = useState([])
+
 
   useEffect(() => {
     const url = "https://api.boostr.cl/radios.json";
@@ -59,7 +63,7 @@ function App() {
   }
 
   return (
-    <main>
+    <main >
       <div>
         <p>Radios Chilenas</p>
       </div>
@@ -74,9 +78,17 @@ function App() {
           ))}
         </ul>
       )}
-      <Radio data={data} iterador={iterador}></Radio>
-      <button onClick={anteriorRadio}>atras</button>
-      <button onClick={siguienteRadio}>siguiente</button>
+      <div className='card'>
+        <Radio data={data} iterador={iterador}></Radio>
+        <div className="card__wrapper">
+            <button className="card__btn btnAnterior" onClick={anteriorRadio}><FontAwesomeIcon icon={faBackward} style={{ color: "#ffffff" }} /></button>
+            <button className="card__btn card__btn-play ">
+             <FontAwesomeIcon icon={faPlay} style={{ color: "#ffffff" }} />
+            </button>
+            <button className="card__btn btnSiguiente" onClick={siguienteRadio}><FontAwesomeIcon icon={faForward} style={{ color: "#ffffff" }}></FontAwesomeIcon></button>
+        </div>
+      </div>
+      
     </main>
   );
 }
