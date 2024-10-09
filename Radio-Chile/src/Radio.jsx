@@ -32,7 +32,7 @@ const Radio = ({ data, iterador}) => {
         </div>
         <a href={elemento.url}>{elemento.name}</a>
         <div>
-          <audio controls id="audioElement" volume="0.7">
+          <audio controls id="audioElement">
             <source src={elemento.stream} type="audio/aac"/>
             Tu navegador no soporta el elemento de audio.
           </audio>
