@@ -138,7 +138,7 @@
   width: 424px;
   height: 542px;
   position: absolute;
-  bottom: 49px;
+  bottom: 104px;
   z-index: 5;
   border-radius: 20px;
   display: flex;
@@ -263,7 +263,7 @@
 
 .marcaAgua{
   position: absolute;
-  margin-top: 60px;
+  bottom: 10px;
   left: 10px;
 }
 
@@ -273,14 +273,39 @@
   top: 58px;
 }
 
-@media (max-width:1440px){
+
+
+@media (max-width:1024px){
   #root{
     margin: 130px auto 0px;
   }
   .tapadonCourtois{
-    bottom: 105px;
+    bottom: 182px;
   }
   .containerInicioRadio{
-    bottom: -5px;
+    bottom: 73px;
+  }
+}
+
+@media  (max-width:941px){
+  .tapadonCourtois{
+    bottom: 183px;
+  }
+}
+
+@media  (max-width:375px){
+  .marcaAgua{
+    margin-top: 108px;
+    position: relative;
+  }
+  .containerBusqueda{
+    margin: 100px 0px 36px;
+  }
+
+  .tapadonCourtois{
+    bottom: 68px;
+  }
+  .containerInicioRadio{
+    bottom: -42px;
   }
 }
