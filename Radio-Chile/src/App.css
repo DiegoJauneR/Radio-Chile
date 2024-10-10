@@ -138,7 +138,7 @@
   width: 424px;
   height: 542px;
   position: absolute;
-  bottom: 103px;
+  bottom: 49px;
   z-index: 5;
   border-radius: 20px;
   display: flex;
@@ -271,4 +271,16 @@
   margin-left: -231px;
   position: absolute;
   top: 58px;
+}
+
+@media (max-width:1440px){
+  #root{
+    margin: 130px auto 0px;
+  }
+  .tapadonCourtois{
+    bottom: 105px;
+  }
+  .containerInicioRadio{
+    bottom: -5px;
+  }
 }

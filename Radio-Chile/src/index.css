@@ -36,7 +36,7 @@ h1 {
 
 
 .imgFondo{
-  height: 100vh;
+  height: max-content;
   width: 100%;
   position: absolute;
   z-index: -20;
