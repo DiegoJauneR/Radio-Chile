@@ -20,9 +20,9 @@ const Radio = ({ data, iterador, volume}) => {
 
       audioElement.volume = volume
 
-      const playAudio = () => {
+      const playAudio = async () => {
         try {
-          audioElement.play()
+         await audioElement.play()
           console.log("Reproducción automática iniciada.");
         } catch (error) {
           console.error("La reproducción automática fue bloqueada:", error)

@@ -1,10 +1,24 @@
 #root {
   max-width: 1280px;
-  margin: 0 auto;
+  margin: 70px auto 0px;
   padding: 2rem;
   text-align: center;
 }
 
+body::-webkit-scrollbar {
+  width: var(--sb-size)
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 20px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 20px;
+  border: 2px solid #000000;
+}
 
 
 .card {
@@ -17,24 +31,24 @@
 
 
 .listaRadios{
-  background-color: #888;
   max-height: 300px;
-  overflow: auto;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   position: absolute;
   z-index: 2;
   top: 270px;
+  border-radius: 1rem;
+  border: 1px solid #00D26A;
+  margin-left: 10px ;
 }
 
 .listaRadios button{
-  width: 300px;
+  width: 282px;
   height: 50px;
-  background-color: #757575;
+  background-color: #000000b8;
   color: white;
-  border: 1px solid rgb(100, 100, 100);
-  border-radius: 0px;
-
+  border: none;
 }
 
 .inputBusqueda{
@@ -43,6 +57,10 @@
   border-radius: 10px;
 }
 
+.listaRadios button:hover{
+  cursor: pointer;
+  background-color: #000000e3;
+}
 
 
 .btnBuscar {
@@ -50,8 +68,8 @@
   position: relative;
   padding: 10px 24px;
   font-size: 18px;
-  color: #66ff66;
-  border: 2px solid #66ff66;
+  color: #00D26A;
+  border: 2px solid #00D26A;
   border-radius: 34px;
   background-color: transparent;
   font-weight: 600;
@@ -69,7 +87,7 @@
   border-radius: inherit;
   scale: 0;
   z-index: -1;
-  background-color:#66ff66;
+  background-color:#00D26A;
   transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
@@ -80,7 +98,7 @@
 .btnBuscar:hover {
   color: #212121;
 
-  box-shadow: 0 0px 20px #66ff66;
+  box-shadow: 0 0px 20px #00D26A;
 }
 
 
@@ -118,12 +136,153 @@
  
  .input:focus, input:valid {
   outline: none;
-  border: 1.5px solid #1a73e8;
+  border: 1.5px solid #00D26A;
  }
  
  .input:focus ~ label, input:valid ~ label {
   transform: translateY(-50%) scale(0.8);
-  background-color: #212121;
+  background-color: #00c161;
   padding: 0 .2em;
-  color: #2196f3;
+  color: #ffff;
+  border-radius: 8px;
  }
+
+ .containerInicioRadio{
+  background-color: rgb(0, 0, 0);
+  width: 424px;
+  height: 542px;
+  position: absolute;
+  bottom: 103px;
+  z-index: 5;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 10px 10px 58px 1px rgba(0,0,0,0.75);
+ }
+
+ .containerInicioRadio button{
+  height: 60px;
+  width: 150px;
+  border-radius: 15px;
+  margin-top: 280px;
+ }
+
+ .containerInicioRadio button:hover{
+  cursor: pointer;
+ }
+ 
+
+
+ .btnIniciarRadio {
+  padding: 1.3em 3em;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: #000000;
+  border: 1px solid #23c483;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.btnIniciarRadio:hover {
+  background-color: #23c483;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+.btnIniciarRadio:active {
+  transform: translateY(-1px);
+}
+
+
+.tapadonCourtois{
+  background-color: #F1F3F4;
+  width: 38px;
+  height: 31px;
+  position: absolute;
+  bottom: 239px;
+  margin-left: 62px;
+  z-index: 2;
+  border-radius: 5px;
+ }
+
+
+
+.loading {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  justify-content: center;
+}
+
+.load {
+  width: 2px;
+  height: 33px;
+  background-color: limegreen;
+  animation: 1s move6 infinite;
+  border-radius: 5px;
+  margin: 0.1em;
+  
+}
+
+.load:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.load:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.load:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+
+@keyframes move6 {
+  0% {
+    height: 0.2em;
+  }
+
+  25% {
+    height: 0.7em;
+  }
+
+  50% {
+    height: 1.5em;
+  }
+
+  100% {
+    height: 0.2em;
+  }
+}
+
+
+.imagenBloqueo{
+  position: absolute;
+  z-index: -1;
+  height: 542px;
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  filter: brightness(0.5)
+}
+
+
+.marcaAgua{
+  position: absolute;
+  margin-top: 50px;
+  left: 10px;
+}
+
+.imgTitulo{
+  margin-left: -231px;
+  position: absolute;
+  top: 58px;
+}

@@ -2,18 +2,20 @@ import { useState, useEffect } from "react";
 import Radio from "./Radio";
 import "./App.css";
 import "./radio.css";
+import 'animate.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faForward, faPlay, faBackward} from '@fortawesome/free-solid-svg-icons';
+import { faForward, faPlay, faBackward, faPause} from '@fortawesome/free-solid-svg-icons';
 
 function App() {
   const [data, setData] = useState([]);
-  const [iterador, setIterador] = useState(0)
+  const [iterador, setIterador] = useState(1)
   const [busqueda, setBusqueda] = useState()
   const [radiosFiltradas, setRadiosFiltradas] = useState([])
   const [isPlaying, setIsPlaying] = useState(true)
   const [volume, setVolume] = useState(0.1)
-
-
+  const [isFadingOut, setIsFadingOut] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const url = "https://api.boostr.cl/radios.json";
@@ -83,6 +85,15 @@ function App() {
     setRadiosFiltradas([])
   }
 
+  const handleClick = () => {
+    setIsFadingOut(true);
+    setIterador(0)
+    setIsVisible(true)
+  };
+  const handleAnimationEnd = () => {
+    setIsHidden(true);
+  };
+
   const togglePlayPause = () => {
     const audioElement = document.getElementById("audioElement")
 
@@ -98,10 +109,27 @@ function App() {
   return (
     <main >
       <div>
-        <h1>Radios Chilenas</h1>
+        <img src="src/assets/titulo.webp" alt=""  className="imgTitulo"/>
+      </div>
+      
+      {!isHidden &&(
+        <div className={`containerInicioRadio ${isFadingOut ? 'animate__animated animate__fadeOut' : ''}`}
+        onAnimationEnd={handleAnimationEnd} >
+        <img src="src/assets/fondoBloqueo.webp" alt="Fondo Card" className="imagenBloqueo" />
+        <button className="btnIniciarRadio" onClick={handleClick}>Iniciar</button>
+        </div>
+      )}
+        
+      <div className="tapadonCourtois">
+        <div className="loading">
+          <div className="load"></div>
+          <div className="load"></div>
+          <div className="load"></div>
+          <div className="load"></div>
+        </div>
       </div>
     
-      <div className="containerBusqueda">
+      <div className="containerBusqueda" style={{ visibility: isVisible ? 'visible' : 'hidden' }}>
         
         <div className="input-group">
           <input required=" " type="text" name="text"  className="input" value={busqueda} onChange={filtrarBusqueda} />
@@ -126,12 +154,14 @@ function App() {
         <div className="card__wrapper">
             <button className="card__btn btnAnterior" onClick={anteriorRadio}><FontAwesomeIcon icon={faBackward} style={{ color: "#ffffff" }} /></button>
             <button className="card__btn card__btn-play " onClick={togglePlayPause}>
-             <FontAwesomeIcon icon={faPlay} style={{ color: "#ffffff" }} />
+            {isPlaying ? <FontAwesomeIcon icon={faPause} style={{ color: "#ffffff" }} /> : <FontAwesomeIcon icon={faPlay} style={{ color: "#ffffff" }} />}
             </button>
             <button className="card__btn btnSiguiente" onClick={siguienteRadio}><FontAwesomeIcon icon={faForward} style={{ color: "#ffffff" }}></FontAwesomeIcon></button>
         </div>
       </div>
-      
+      <footer className="marcaAgua">
+      <address> &copy;Creado por Sebastian Asencio, Felipe Castro, Diego Jaune, David Osorio</address>
+      </footer>
     </main>
   );
 }
