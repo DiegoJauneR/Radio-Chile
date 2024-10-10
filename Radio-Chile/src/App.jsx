@@ -47,9 +47,11 @@ function App() {
 
   const siguienteRadio = () => {
     if(iterador === data.length-1) {
+      setIsPlaying(true)
       setIterador(0)
       return
     }
+    setIsPlaying(true)
     console.log(data.length)
     setIterador(iterador+1)
   }
@@ -57,8 +59,10 @@ function App() {
   const anteriorRadio = () => {
     if(iterador === 0) {
       setIterador(data.length-1)
+      setIsPlaying(true)
       return
     }
+    setIsPlaying(true)
     setIterador(iterador-1)
   }
 
@@ -67,6 +71,7 @@ function App() {
     const iteradorBuscado = data.findIndex(iterador2)
     if(iteradorBuscado===-1) return
     setIterador(iteradorBuscado) 
+    setIsPlaying(true)
   }
 
   const filtrarBusqueda = (event) => {
@@ -121,7 +126,7 @@ function App() {
       )}
         
       <div className="tapadonCourtois">
-        <div className="loading">
+        <div className="loading" style={{ visibility: isPlaying ? 'visible' : 'hidden' }}>
           <div className="load"></div>
           <div className="load"></div>
           <div className="load"></div>
