@@ -21,10 +21,9 @@
 body {
   margin: 0;
   display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
-
+  overflow-x: hidden;
 }
 
 
@@ -36,18 +35,16 @@ h1 {
 
 
 .imgFondo{
-  height: 100vh;
+  height: -webkit-fill-available;
   width: 100%;
-  position: absolute;
+  position: fixed;
   z-index: -20;
   object-fit: cover;
   filter: brightness(0.6);
   
 }
 
-@media (max-width: 1024px) and (min-width: 375px) {
-  .imgFondo{
-    height: -webkit-fill-available;
-    position: fixed;
-  }
-}
+
+
+
+

@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import { useEffect } from 'react';
 
 import './radio.css'
-const Radio = ({ data, iterador, volume}) => {
+const Radio = ({ data, iterador, volume, isPlaying}) => {
   
 
  
@@ -42,7 +43,16 @@ const Radio = ({ data, iterador, volume}) => {
         </div>
         <div className='card__title'>{elemento.name}</div>
         <div className='card__subtitle'><a href={elemento.url}>{elemento.name}</a></div>
-       
+
+        <div className="tapadonCourtois">
+          <div className="loading" style={{ visibility: isPlaying ? 'visible' : 'hidden' }}>
+            <div className="load"></div>
+            <div className="load"></div>
+            <div className="load"></div>
+            <div className="load"></div>
+          </div>
+        </div>
+
         <div className='card__wrapper'>
           <div className="card__time card__time-passed">🟢</div>
           <div className="card__timeline">

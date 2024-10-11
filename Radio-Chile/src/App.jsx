@@ -114,24 +114,7 @@ function App() {
   return (
     <main >
       <div>
-        <img src="src/assets/titulo.webp" alt=""  className="imgTitulo"/>
-      </div>
-      
-      {!isHidden &&(
-        <div className={`containerInicioRadio ${isFadingOut ? 'animate__animated animate__fadeOut' : ''}`}
-        onAnimationEnd={handleAnimationEnd} >
-        <img src="src/assets/fondoBloqueo.webp" alt="Fondo Card" className="imagenBloqueo" />
-        <button className="btnIniciarRadio" onClick={handleClick}>Iniciar</button>
-        </div>
-      )}
-        
-      <div className="tapadonCourtois">
-        <div className="loading" style={{ visibility: isPlaying ? 'visible' : 'hidden' }}>
-          <div className="load"></div>
-          <div className="load"></div>
-          <div className="load"></div>
-          <div className="load"></div>
-        </div>
+        <img src="https://res.cloudinary.com/doq82xcpd/image/upload/v1728602094/titulo_ekqc6e.webp" alt=""  className="imgTitulo"/>
       </div>
     
       <div className="containerBusqueda" style={{ visibility: isVisible ? 'visible' : 'hidden' }}>
@@ -155,7 +138,14 @@ function App() {
           </div>
         )}
       <div className='card'>
-        <Radio data={data} iterador={iterador} volume={volume}></Radio>
+        {!isHidden &&(
+          <div className={`containerInicioRadio ${isFadingOut ? 'animate__animated animate__fadeOut' : ''}`}
+          onAnimationEnd={handleAnimationEnd} >
+          <img src="https://res.cloudinary.com/doq82xcpd/image/upload/v1728602103/fondoBloqueo_o5scov.webp" alt="Fondo Card" className="imagenBloqueo" />
+          <button className="btnIniciarRadio" onClick={handleClick}>Iniciar</button>
+          </div>
+        )}
+        <Radio data={data} iterador={iterador} volume={volume} isPlaying={isPlaying}></Radio>
         <div className="card__wrapper">
             <button className="card__btn btnAnterior" onClick={anteriorRadio}><FontAwesomeIcon icon={faBackward} style={{ color: "#ffffff" }} /></button>
             <button className="card__btn card__btn-play " onClick={togglePlayPause}>
@@ -164,9 +154,6 @@ function App() {
             <button className="card__btn btnSiguiente" onClick={siguienteRadio}><FontAwesomeIcon icon={faForward} style={{ color: "#ffffff" }}></FontAwesomeIcon></button>
         </div>
       </div>
-      <footer className="marcaAgua">
-      <address> &copy;Creado por Sebastian Asencio, Felipe Castro, Diego Jaune, David Osorio</address>
-      </footer>
     </main>
   );
 }
