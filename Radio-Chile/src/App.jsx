@@ -12,7 +12,7 @@ function App() {
   const [busqueda, setBusqueda] = useState()
   const [radiosFiltradas, setRadiosFiltradas] = useState([])
   const [isPlaying, setIsPlaying] = useState(true)
-  const [volume, setVolume] = useState(0)
+  const [volume, setVolume] = useState(1)
   const [isFadingOut, setIsFadingOut] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
