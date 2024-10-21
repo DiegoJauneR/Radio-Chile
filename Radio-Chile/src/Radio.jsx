@@ -42,7 +42,7 @@ const Radio = ({ data, iterador, volume, isPlaying}) => {
           <img src={elemento.image[200]} alt="Logo de Radio" />
         </div>
         <div className='card__title'>{elemento.name}</div>
-        <div className='card__subtitle'><a href={elemento.url}>{elemento.name}</a></div>
+        <div className='card__subtitle'><a href={elemento.url} target="_blank">{elemento.name}</a></div>
 
         <div className="tapadonCourtois">
           <div className="loading" style={{ visibility: isPlaying ? 'visible' : 'hidden' }}>
