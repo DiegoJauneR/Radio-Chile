@@ -1,51 +1,51 @@
 /* eslint-disable react/prop-types */
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
-import './radio.css'
-const Radio = ({ data, iterador, volume, isPlaying}) => {
-  
-
- 
-
-  const elemento = data[iterador]
+import "./radio.css";
+const Radio = ({ data, iterador, volume, isPlaying }) => {
+  const elemento = data[iterador];
 
   if (!data || data.length === 0) {
     return <p>No hay datos disponibles</p>;
   }
 
-
   useEffect(() => {
     const audioElement = document.getElementById("audioElement");
-    
-    if (audioElement) {
 
-      audioElement.volume = volume
+    if (audioElement) {
+      audioElement.volume = volume;
 
       const playAudio = async () => {
         try {
-         await audioElement.play()
+          await audioElement.play();
           console.log("Reproducción automática iniciada.");
         } catch (error) {
-          console.error("La reproducción automática fue bloqueada:", error)
+          console.error("La reproducción automática fue bloqueada:", error);
         }
       };
 
-      playAudio()
+      playAudio();
     }
-  }, [elemento.stream, volume])
+  }, [elemento.stream, volume]);
 
   return (
-    <section key={elemento.name} >
-      <div >
-        
-        <div className='card__img'>
+    <section key={elemento.name}>
+      <div>
+        <div className="card__img">
           <img src={elemento.image[200]} alt="Logo de Radio" />
         </div>
-        <div className='card__title'>{elemento.name}</div>
-        <div className='card__subtitle'><a href={elemento.url} target="_blank">{elemento.name}</a></div>
+        <div className="card__title">{elemento.name}</div>
+        <div className="card__subtitle">
+          <a href={elemento.url} target="_blank">
+            {elemento.name}
+          </a>
+        </div>
 
         <div className="tapadonCourtois">
-          <div className="loading" style={{ visibility: isPlaying ? 'visible' : 'hidden' }}>
+          <div
+            className="loading"
+            style={{ visibility: isPlaying ? "visible" : "hidden" }}
+          >
             <div className="load"></div>
             <div className="load"></div>
             <div className="load"></div>
@@ -53,11 +53,11 @@ const Radio = ({ data, iterador, volume, isPlaying}) => {
           </div>
         </div>
 
-        <div className='card__wrapper'>
+        <div className="card__wrapper">
           <div className="card__time card__time-passed">🟢</div>
           <div className="card__timeline">
-            <audio controls id="audioElement" >
-              <source src={elemento.stream} type="audio/aac"/>
+            <audio controls id="audioElement">
+              <source src={elemento.stream} type="audio/aac" />
               Tu navegador no soporta el elemento de audio.
             </audio>
           </div>
